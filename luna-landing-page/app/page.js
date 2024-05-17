@@ -34,16 +34,12 @@ export default function Home() {
           style={{zIndex: -1, position: "absolute", top: 0, left: 0}}
         />
         <div className={styles.navbar}>
-          <h1 className={styles.navbarTitle}>LUNA</h1>
+          <h1 className={styles.navbarTitle}>$LUNA</h1>
           <Image
             src="/luna-logo.png"
             width={winWidth < 1440 ? 40 : 60}
             height={winWidth < 1440 ? 40 : 60}
             alt="Logo"
-            // style={{
-            //   width: winWidth < 1440 ? "40px" : "60px",
-            //   height: winWidth < 1440 ? "40px" : "60px"
-            // }}
           />
         </div>
 
@@ -92,18 +88,39 @@ export default function Home() {
         top: winWidth < 1440 ? "87vh" : "89.5vh",
         width: "77.8%"
       }}>
-        <iframe
-          src="https://www.youtube.com/embed/4EErrd4Kh7k?autoplay=1&mute=1"
-          allow="autoplay"
-          frameborder="0"
-          allowFullScreen
-          width={winWidth / 2}
-          height={winHeight / 1.5}
-          style={{
-            borderRadius: 16
-          }}
-          autoPlay
-        />
+        <div className={styles.videoContainer}>
+            <h1>About</h1>
+
+            <iframe
+              src="https://www.youtube.com/embed/4EErrd4Kh7k?autoplay=1&mute=1"
+              allow="autoplay"
+              frameborder="0"
+              allowFullScreen
+              width={winWidth / 2}
+              height={winHeight / 1.5}
+              style={{
+                borderRadius: 16
+              }}
+              autoPlay
+            />
+
+            <h2>Luna token is inspired by luna the cat from sailormoon series <br/> as you can see from the video on top !</h2>
+        </div>
+
+        <div className={styles.tokenomicsSection}>
+            <h1>Tokenomics</h1>
+
+            <div className={styles.container} style={{padding: "6rem 22.5rem"}}>
+              <h1>Total Supply</h1>
+              <h4>1,000,000,000 $LUNA</h4>
+            </div>
+
+            <div className={styles.container} style={{marginTop: "2rem"}}>
+              <h1>Token Address</h1>
+              <h4>EZUFNJMZTBpungQX2czEb9ZyCMjtdzsDGMK4UywDUa1F</h4>
+            </div>
+        </div>
+        
       </div>
       
     </main>
