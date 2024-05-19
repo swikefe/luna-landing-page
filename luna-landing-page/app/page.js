@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [winWidth, setWinWidth] = useState('0')
   const [winHeight, setWinHeight] = useState('0')
+  const [copyText, setCopyText] = useState('Copy')
   useEffect(() => { 
     const updateWidth = async () => {
       const windowWidth = window.innerWidth
@@ -22,14 +23,27 @@ export default function Home() {
 
     updateHeight()
   }, [])
-  // console.log(winWidth, "<<<< width");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if(copyText === "Copied"){
+        setCopyText('Copy')
+      }
+
+      else {
+        setCopyText('Copy')
+      }
+    }, 3000)
+
+    return () => clearInterval(interval)
+  }, [copyText])
   return (
     <main className={styles.main}>
       <div className={styles.sectionWithBg}>
         <Image
           src="/main-bg.jpg"
           width={winWidth}
-          height={winHeight}
+          height={winWidth < 1440 ? winHeight + 100 : winHeight}
           alt="main-bg"
           style={{zIndex: -1, position: "absolute", top: 0, left: 0}}
         />
@@ -85,8 +99,8 @@ export default function Home() {
       
 
       <div className={styles.descSection} style={{
-        top: winWidth < 1440 ? "87vh" : "89.5vh",
-        width: "77.8%"
+        top: winWidth < 1440 ? "100vh" : "89.5vh",
+        width: winWidth
       }}>
         <div className={styles.videoContainer}>
             <h1>About</h1>
@@ -104,20 +118,28 @@ export default function Home() {
               autoPlay
             />
 
-            <h2>Luna token is inspired by luna the cat from sailormoon series <br/> as you can see from the video on top !</h2>
+            <h2 style={{fontSize : winWidth < 1440 ? 16 : 24}}>Luna token is inspired by luna the cat from sailormoon series <br/> as you can see from the video on top !</h2>
         </div>
 
-        <div className={styles.tokenomicsSection}>
+        <div className={styles.tokenomicsSection} style={{
+          width: winWidth
+        }}>
             <h1>Tokenomics</h1>
 
-            <div className={styles.container} style={{padding: "6rem 22.5rem"}}>
+            <div className={styles.container} 
+              // style={{padding: "6rem 22.5rem"}}
+            >
               <h1>Total Supply</h1>
               <h4>1,000,000,000 $LUNA</h4>
             </div>
 
             <div className={styles.container} style={{marginTop: "2rem"}}>
               <h1>Token Address</h1>
-              <h4>EZUFNJMZTBpungQX2czEb9ZyCMjtdzsDGMK4UywDUa1F</h4>
+              <h4 style={{fontSize : winWidth < 1440 ? 24 : 36}}>EZUFNJMZTBpungQX2czEb9<br />ZyCMjtdzsDGMK4UywDUa1F</h4>
+              <button className={styles.copyBtn} onClick={() => {
+                navigator.clipboard.writeText('EZUFNJMZTBpungQX2czEb9ZyCMjtdzsDGMK4UywDUa1F')
+                setCopyText('Copied')
+              }}>{copyText}</button>
             </div>
         </div>
         
