@@ -37,6 +37,7 @@ export default function Home() {
 
     return () => clearInterval(interval)
   }, [copyText])
+
   return (
     <main className={styles.main}>
       <div className={styles.sectionWithBg}>
@@ -76,21 +77,27 @@ export default function Home() {
               className={styles.actionBtns}
             />
 
-            <Image
-              src="/twitter.png"
-              width={55}
-              height={55}
-              alt="twitter logo"
-              className={styles.actionBtns}
-            />
+            <a href="https://x.com/proplanyall" target="blank_">
+              <Image
+                src="/twitter.png"
+                width={55}
+                height={55}
+                alt="twitter logo"
+                className={styles.actionBtns}
+              />
+            </a>
 
-            <Image
-              src="/telegram.png"
-              width={55}
-              height={55}
-              alt="telegram logo"
-              className={styles.actionBtns}
-            />
+            <a href="https://t.me/+CPOWHXb26tBiYTM0" target="blank_">
+              <Image
+                src="/telegram.png"
+                width={55}
+                height={55}
+                alt="telegram logo"
+                className={styles.actionBtns}
+              />
+            </a>
+
+            
           </div>
           
 
@@ -126,16 +133,18 @@ export default function Home() {
         }}>
             <h1>Tokenomics</h1>
 
-            <div className={styles.container} 
-              // style={{padding: "6rem 22.5rem"}}
-            >
+            <div className={styles.container} >
               <h1>Total Supply</h1>
               <h4>1,000,000,000 $LUNA</h4>
             </div>
 
             <div className={styles.container} style={{marginTop: "2rem"}}>
               <h1>Token Address</h1>
-              <h4 style={{fontSize : winWidth < 1440 ? 24 : 36}}>EZUFNJMZTBpungQX2czEb9<br />ZyCMjtdzsDGMK4UywDUa1F</h4>
+              <h4 style={{
+                fontSize : winWidth < 1440 ? 24 : 36,
+              }}>
+                EZUFNJMZTBpungQX2czEb9<br />ZyCMjtdzsDGMK4UywDUa1F
+              </h4>
               <button className={styles.copyBtn} onClick={() => {
                 navigator.clipboard.writeText('EZUFNJMZTBpungQX2czEb9ZyCMjtdzsDGMK4UywDUa1F')
                 setCopyText('Copied')
